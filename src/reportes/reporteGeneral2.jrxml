@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteGeneral2" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="649296f4-c1cf-4d84-b50e-cf10e5180d4b">
+	<property name="ireport.zoom" value="1.6105100000000019"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[SELECT
+     categoria.`nombreCategoria` AS categoria_nombreCategoria,
+     corredor.`DNI` AS corredor_DNI,
+     corredor.`nombre` AS corredor_nombre,
+     corredor.`apellido` AS corredor_apellido,
+     corredor.`numero` AS corredor_numero,
+     corredor.`tiempo` AS corredor_tiempo,
+     corredor.`estado` AS corredor_estado
+FROM
+     `categoria` categoria INNER JOIN `corredor` corredor ON categoria.`id_Categoria` = corredor.`id_Categoria`
+WHERE
+	estado = true]]>
+	</queryString>
+	<field name="categoria_nombreCategoria" class="java.lang.String"/>
+	<field name="corredor_DNI" class="java.lang.Integer"/>
+	<field name="corredor_nombre" class="java.lang.String"/>
+	<field name="corredor_apellido" class="java.lang.String"/>
+	<field name="corredor_numero" class="java.lang.Integer"/>
+	<field name="corredor_tiempo" class="java.lang.String"/>
+	<field name="corredor_estado" class="java.lang.Boolean"/>
+	<sortField name="corredor_tiempo"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="83" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="63" y="39" width="200" height="22" forecolor="#FFFFFF" uuid="efd86049-c78c-4e6b-8d26-9955431032a0"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<image>
+				<reportElement x="-19" y="0" width="593" height="57" uuid="05dc0dfb-6258-4afe-a71c-e0e1360fe81c"/>
+				<imageExpression><![CDATA["C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\InterfacesJava\\src\\reportes\\wood.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="5" width="263" height="33" uuid="04b75d7f-73dd-4259-a1b6-928f091b0382"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Informe Carrera]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="129" height="19" uuid="5fa51f26-3d76-4bd9-affb-6a5c464b3167"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<text><![CDATA[Clasificacion General]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1" uuid="dd962834-14ac-4704-9182-0bcd48487013"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="3" width="84" height="20" uuid="ebdba3a7-4a81-4851-a5fd-cebac56d051e"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<text><![CDATA[Posicion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="2" width="100" height="20" uuid="ac9ca79d-7918-4445-b105-763d8fcb583a"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<text><![CDATA[Dorsal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="3" width="100" height="20" uuid="ac785a90-9688-4dc8-acc0-5c8b556b76c8"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="2" width="100" height="20" uuid="9f2dc467-3788-4b4f-8f84-4494693bb96b"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="2" width="100" height="20" uuid="ea2e8a59-ec1a-4aed-a483-251590f67c3c"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<text><![CDATA[Tiempo]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="21" width="555" height="1" uuid="d284c014-362b-4ed0-972f-42016298f942"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="ac1e2d9f-9e4a-4fbc-8f5f-d3a59be1b6a5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="84" height="20" uuid="054dafa2-020d-4cf5-922e-80d6d926392f"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="84" y="0" width="100" height="20" uuid="ea008c97-c78e-442f-ab2d-d5eaa483e907"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{corredor_numero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="0" width="100" height="20" uuid="ad912b4b-44bf-4ff0-a777-2d1c102621c0"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{corredor_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="284" y="0" width="100" height="20" uuid="bf578070-151d-4cda-b5e5-b3325ed4ba90"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{corredor_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="384" y="0" width="100" height="20" uuid="087507c7-60c8-4942-809b-320716f38cd9"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{corredor_tiempo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-2" y="44" width="555" height="1" uuid="fbbec6e6-f194-49f2-864e-190eacba1ce6"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="f3978ba9-455d-445a-975b-278c475e1967"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="56454643-2d01-40d7-a4ea-789eb2c0e423"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="816473d1-7e9f-47a2-9952-b1303276e4d3"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
