@@ -14,7 +14,7 @@ public class CategoriaDAO{
     public ArrayList<CategoriaVO> Listar_CategoriaVO(){
         ArrayList<CategoriaVO> list = new ArrayList<CategoriaVO>();
         Conectar conec = new Conectar();
-        String sql = "SELECT `nombreCategoria`, `desdeAnio`, `hastaAnio` FROM `categoria`";
+        String sql = "SELECT id_Categoria, `nombreCategoria`, `desdeAnio`, `hastaAnio` FROM `categoria`";
         ResultSet rs = null;
         PreparedStatement ps = null;
         try{
@@ -22,11 +22,12 @@ public class CategoriaDAO{
             rs = ps.executeQuery();
             while(rs.next()){
                 CategoriaVO vo = new CategoriaVO();
-                
-                vo.setNombreCategoria(rs.getString(1));
-                vo.setDesdeAnio(rs.getInt(2));
-                vo.setHastaAnio(rs.getInt(3));
+                vo.setId_categoria(rs.getInt(1));
+                vo.setNombreCategoria(rs.getString(2));
+                vo.setDesdeAnio(rs.getInt(3));
+                vo.setHastaAnio(rs.getInt(4));
 //                vo.setSexocategoria(rs.getString(4));
+                
                 list.add(vo);
             }
         }catch(SQLException ex){

@@ -221,6 +221,68 @@ public class CorredorDAO{
         return a;
     }
 
+    
+     public int limpiarEstadoCorredor(CorredorVO vo){
+        Conectar conec = new Conectar();
+        String sql = "UPDATE corredor SET  estado = ? WHERE 1";
+        PreparedStatement ps = null;
+        int a = 0;
+        try{
+            ps = conec.getConnection().prepareStatement(sql);
+            
+            ps.setBoolean(1, vo.isEstado());
+            
+//            ps.setString(3, vo.getApellido());
+//            ps.setInt(4, vo.getEdad());
+//            ps.setInt(5, vo.getNumero());
+//            ps.setInt(6, vo.getTiempo());
+//            ps.setString(7, vo.getSexoCorredor());
+//            ps.setInt(8, vo.getId_categoria());
+//            ps.setInt(9, dni);
+            a = ps.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println("Error SQl Clase RegistrarTiempo: "+ ex.getMessage());
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{
+                ps.close();
+                conec.desconectar();
+            }catch(Exception ex){}
+        }
+        return a;
+    }
+     
+     public int limpiarTiempoCorredor(CorredorVO vo){
+        Conectar conec = new Conectar();
+        String sql = "UPDATE corredor SET  tiempo = ? WHERE 1";
+        PreparedStatement ps = null;
+        int a = 0;
+        try{
+            ps = conec.getConnection().prepareStatement(sql);
+            
+            ps.setString(1, vo.getTiempo());
+            
+//            ps.setString(3, vo.getApellido());
+//            ps.setInt(4, vo.getEdad());
+//            ps.setInt(5, vo.getNumero());
+//            ps.setInt(6, vo.getTiempo());
+//            ps.setString(7, vo.getSexoCorredor());
+//            ps.setInt(8, vo.getId_categoria());
+//            ps.setInt(9, dni);
+            a = ps.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println("Error SQl Clase RegistrarTiempo: "+ ex.getMessage());
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{
+                ps.close();
+                conec.desconectar();
+            }catch(Exception ex){}
+        }
+        return a;
+    }
 
 /*Metodo Eliminar*/
     public int Eliminar_CorredorVO(CorredorVO vo){
@@ -231,6 +293,28 @@ public class CorredorDAO{
         try{
             ps = conec.getConnection().prepareStatement(sql);
             ps.setInt(1, vo.getDNI());
+            a = ps.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println("Error SQl Clase EliminarCorredor "+ex.getMessage());
+        }catch(Exception ex){
+            System.out.println("Error SQl Clase EliminarCorredor: "+ex.getMessage());
+        }finally{
+            try{
+                ps.close();
+                conec.desconectar();
+            }catch(Exception ex){}
+        }
+        return a;
+    }
+    
+    //Elimminar a todos los corredores
+    public int eliminarAll(){
+        Conectar conec = new Conectar();
+        String sql = "DELETE FROM corredor ";
+        PreparedStatement ps = null;
+        int a = 0;
+        try{
+            ps = conec.getConnection().prepareStatement(sql);
             a = ps.executeUpdate();
         }catch(SQLException ex){
             System.out.println("Error SQl Clase EliminarCorredor "+ex.getMessage());

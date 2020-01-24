@@ -18,7 +18,7 @@ public class Tabla_CategoriaVO{
         dt.addColumn("Edad desde");
         dt.addColumn("Edad hasta");
 //        dt.addColumn("Sexo");
-
+        tabla.setVisible(false);
         
         dao = new CategoriaDAO();
         CategoriaVO vo = new CategoriaVO();
@@ -35,6 +35,9 @@ public class Tabla_CategoriaVO{
                 dt.addRow(fila);
             }
             tabla.setModel(dt);
+            dt.fireTableDataChanged();
+            tabla.setVisible(true);
+
         }
     }
     
